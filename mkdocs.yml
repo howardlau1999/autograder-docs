@@ -1,29 +1,9 @@
 nav:
-  - 前言: "index.md"
-  - 环境准备:
-    - 开始之前: "getting-started/index.md"
-    - 开发环境: "getting-started/environment.md"
-    - 快速测试: "getting-started/test.md"
-    - 波形仿真: "getting-started/simulation.md"
-    - 烧板验证: "getting-started/program-device.md"
-  - 预备知识:
-    - 简介: "tutorial/index.md"
-    - 处理器架构: "tutorial/arch.md"
-    - "RV32I 指令集": "tutorial/rv32i.md"
-    - 编译与链接: "tutorial/compile-and-link.md"
-    - 中断和异常: "tutorial/interrupt-and-exception.md"
-    - 总线: "tutorial/bus.md"
-  - 实验: 
-    - 简介: "labs/index.md"
-    - 实验一: "labs/lab1.md"
-  - FAQ: "faq/index.md"
-  - 参考资料: "references/index.md"
-  - 附录: 
-    - 简介: "appendix/index.md"
+  - 简介: "index.md"
 
-site_name: YatCPU 实验文档
-site_url: https://scc.sysu.tech/YatCPU-docs/
-repo_url: https://github.com/SYSU-SCC/YatCPU-docs
+site_name: Autograder 使用文档
+site_url: https://autograder-docs.howardlau.me/
+repo_url: https://github.com/howardlau1999/autograder-docs
 copyright: |
   <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
 theme:
@@ -81,6 +61,6 @@ markdown_extensions:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/SYSU-SCC/
+      link: https://github.com/howardlau1999
     - icon: fontawesome/brands/twitter
-      link: https://twitter.com/sysuscc
+      link: https://twitter.com/howardlau1999
