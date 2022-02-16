@@ -12,24 +12,24 @@
             "score": 10, // 测试用例的分数
             "max_score": 20, // 测试用例的满分
             "output": "Any output message", // 希望学生看到的输出信息（可选）
-            "output_path": "path/to/output/file", // 希望学生下载的输出文件，需要在 /autograder/results/outputs 目录下（可选）
+            "output_path": "path/to/output/file" // 希望学生下载的输出文件，需要在 /autograder/results/outputs 目录下（可选）
         },
         {
             "name": "测试用例 2", // 测试用例的名字
             "score": 20, // 测试用例的分数
             "max_score": 20, // 测试用例的满分
             "output": "Any output message", // 希望学生看到的输出信息（可选）
-            "output_path": "path/to/output/file", // 希望学生下载的输出文件，需要在 /autograder/results/outputs 目录下（可选）
+            "output_path": "path/to/output/file" // 希望学生下载的输出文件，需要在 /autograder/results/outputs 目录下（可选）
         },
     ],
     "leaderboard": [ // 排行榜信息，将用于排行榜的显示（可选）
         {
             "name": "准确率", // 排名分数项的名字
-            "value": 0.233, // 排名分数项的值，可以为数字或字符串
+            "value": 0.233 // 排名分数项的值，可以为数字或字符串
         },
         {
             "name": "运行时间",
-            "value": 126,
+            "value": 126
         }
     ]
 }
