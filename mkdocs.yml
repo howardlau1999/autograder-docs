@@ -1,5 +1,6 @@
 nav:
   - 简介: "index.md"
+  - 安装运行: "installation.md"
   - "Docker 镜像构建指引": "docker-image-specification.md"
 
 site_name: Autograder 使用文档
