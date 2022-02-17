@@ -13,10 +13,14 @@ Autograder 以单独的静态可执行二进制文件分发，无需额外的安
 下面以 Linux 为例。假设您已经将二进制文件下载到了 `~/autograder-server` 目录下，首先执行以下命令，初始化数据库并创建配置文件模板：
 
 ```bash
-./autograder-server init
+./autograder-server --init --email 您的邮箱地址
 ```
 
-运行后，当前目录会创建 `db` 和 `storage` 文件夹以及一个 `config.toml` 文件，`db` 文件夹为 Autograder 存放用户信息等的数据库，`storage` 文件夹用来存放用户上传文件、运行结果等，`config.toml` 则是运行时所需的第三方服务配置文件。用文本编辑器打开 `config.toml` 文件并填写以下信息：
+运行后，当前目录会创建 `db` 和 `storage` 文件夹以及一个 `config.toml` 文件，`db` 文件夹为 Autograder 存放用户信息等的数据库，`storage` 文件夹用来存放用户上传文件、运行结果等，`config.toml` 则是运行时所需的第三方服务配置文件。
+
+在初始化成功后，将输出随机生成的 root 用户密码，请保存到合适的地方，后续需要使用该密码登录 Autograder，登录后可以修改。
+
+用文本编辑器打开 `config.toml` 文件并填写以下信息：
 
 ### 配置 SMTP 服务器
 
