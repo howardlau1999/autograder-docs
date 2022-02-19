@@ -60,6 +60,8 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.tabbed:
       alternate_style: true
+extra_css:
+  - stylesheets/extra.css
 extra:
   social:
     - icon: fontawesome/brands/github

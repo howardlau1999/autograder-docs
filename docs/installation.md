@@ -38,7 +38,7 @@ Autograder 以单独的静态可执行二进制文件分发，无需额外的安
 
 ### 配置 hCaptcha 验证码服务
 
-为了避免服务器遭受恶意注册用户的攻击，Autograder 支持使用 hCaptcha 验证码服务来防御攻击。您需要在[hCaptcha 网站](https://dashboard.hcaptcha.com/login) 注册账户，登录后到[hCaptcha 控制面板](https://dashboard.hcaptcha.com/sites?page=1)获取您的 Site Key，同时需要到[hCaptcha 账户设置页面](https://dashboard.hcaptcha.com/settings)获取 Secret Key，以便服务器验证。
+为了避免服务器遭受恶意注册用户的攻击，Autograder 支持使用 hCaptcha 验证码服务来防御攻击。您需要在 [hCaptcha 网站](https://dashboard.hcaptcha.com/login) 注册账户，登录后到 [hCaptcha 控制面板](https://dashboard.hcaptcha.com/sites?page=1)获取您的 Site Key，同时需要到 [hCaptcha 账户设置页面](https://dashboard.hcaptcha.com/settings)获取 Secret Key，以便服务器验证。
 
 ```toml
 [hcaptcha]
