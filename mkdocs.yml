@@ -1,10 +1,13 @@
 nav:
   - 简介: "index.md"
-  - 安装运行: "installation.md"
-  - "Docker 镜像构建指引": "docker-image-specification.md"
+  - 用户指南: 
+      安装运行: "user-guide/installation.md"
+      "Docker 镜像构建指引": "user-guide/docker-image-specification.md"
   - 开发指南: 
       简介: "development-guide/index.md"
+      后端架构: "development-guide/server-architecture.md"
       评测架构: "development-guide/grader-architecture.md"
+      前端架构: "development-guide/frontend-architecture.md"
 
 site_name: Autograder 使用文档
 site_url: https://autograder-docs.howardlau.me/
