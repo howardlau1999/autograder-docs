@@ -31,6 +31,50 @@ service GraderHubService {
 
 当服务进程收到注册请求后，会首先检查连接密钥是否正确，然后会检查该主机名是否已经有在线的评测机，如果有，则返回错误。如果没有，则将评测机提供的信息注册到服务器上，并返回该服务器的 ID。后续的 RPC 调用都将通过这个 ID 进行标识。
 
+### 评测任务清理
+
+评测机有可能在还在运行评测任务的时候退出，或者后端服务连接掉线，此时会有一些残留的评测容器还在运行中。由于后端服务已经在评测机下线的时候将调度到评测机上的任务重新加入评测队列，或者在启动的时候重新评测未完成的任务，这些残留的评测容器可以且应该被清理掉。为此，评测机需要知道自己创建了哪些容器。
+
+评测机可以向后端服务读写任意的 KV 作为自己的元数据。通过元数据的读取，就可以知道自己创建了哪些容器。
+
+```protobuf
+message GetAllMetadataRequest {
+  uint64 grader_id = 1;
+}
+
+message GetAllMetadataResponse {
+  repeated bytes keys = 1;
+  repeated bytes values = 2;
+}
+
+message PutMetadataRequest {
+  uint64 grader_id = 1;
+  bytes key = 2;
+  bytes value = 3;
+}
+
+message PutMetadataResponse {
+
+}
+
+message GetMetadataRequest {
+  uint64 grader_id = 1;
+  bytes key = 2;
+}
+
+message GetMetadataResponse {
+  bytes value = 1;
+}
+
+service GraderHubService {
+  rpc GetAllMetadata(GetAllMetadataRequest) returns (GetAllMetadataResponse);
+  rpc PutMetadata(PutMetadataRequest) returns (PutMetadataResponse);
+  rpc GetMetadata(GetMetadataRequest) returns (GetMetadataResponse);
+}
+```
+
+当 `PutMetadataRequest` 中的 `value` 为空值的时候，表示要删除指定的元数据。评测机在清理完成后应当同时清理后端服务上的元数据。
+
 ## 评测心跳
 
 注册成功后，评测服务将需要建立和服务器的心跳连接，并定时发送心跳包，以便服务器知道评测机是否还在线。同时，服务器程序将通过该心跳连接向评测机主动发送 RPC 请求。
@@ -59,6 +103,7 @@ service GraderHubService {
 ```
 
 在建立心跳连接时，应当在 gRPC 头部包含 `graderId` 字段，值为注册时返回的 ID。评测机应当定时发送心跳，并接收服务器发来的请求，进行处理。
+
 
 ## 处理评测请求
 
@@ -92,7 +137,7 @@ service GraderHubService {
 
 在评测任务结束或被取消时，应该关闭连接，以便服务程序清理相关资源。
 
-评测任务启动时，应该下载 `submission` 对象中的所有 `files`，并在运行时将其挂载到 `/autograder/submission` 目录下。
+评测任务启动时，应该下载 `submission` 对象中的所有 `files`，并在运行时将其挂载到 `/autograder/submission` 目录下。为了服务重启的时候可以清理残留的评测任务，评测机应当将评测任务相关的信息（如容器的 ID）保存到后端服务上。
 
 ### 取消评测
 
