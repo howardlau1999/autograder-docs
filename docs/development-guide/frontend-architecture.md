@@ -44,6 +44,11 @@ Markdown 渲染使用了 `ngx-markdown` 包。由于原来的包对 LaTeX 公式
 
 界定符和其他 KaTex 配置可以使用 `options` 选项传递，目前系统使用的行内公式界定符为 `$`，块公式界定符为 `$$`。 
 
+
+## 日志流显示
+
+日志流使用了 `xterm` 包显示终端输出，页面组件就是简单地调用了初始化 API，并将收到的数据写入到 `xterm` 中。还使用了 `xterm-addon-fit` 插件，来让终端宽度自适应。
+
 ## VCD 波形查看器
 
 为了实现在线波形查看，本系统前端集成了 `vcdrom`、`vcd-stream` 和 `@wavedrom/doppler` 库，分别用于解析和显示 `.vcd` 波形文件。相关模块位于 `src/app/common/vcd-viewer` 目录下。波形查看器会使用 `fetch` 获取 URL 指定的文件，并在下载过程中流式解析 `.vcd` 文件。为了实时展示进度，使用了 `requestIdleCallback` 调用，在 UI 刷新后才触发解析，避免页面卡顿。
