@@ -4,6 +4,10 @@ Autograder 是适合用于项目型大作业的自动评分系统。您可以在
 
 Autograder 设计的目标适用于百人级别的课程，且尽量不依赖其他服务，您无需安装并设置复杂的 SQL 数据库和反向代理服务，内部已包含数据库以及 Web GUI。您只需要安装 Docker 并下载运行预编译好的二进制服务器程序，即可向学生提供 Autograder 网页服务。通过 Docker for Windows 技术，Autograder 也可以在 Windows 上运行，方便您试用体验。
 
+如果您想使用 Autograder，请点击左侧目录阅读用户指南。
+
+如果您想修改 Autograder 的代码或对其进行二次开发，可以参考左侧的开发指南了解代码架构。
+
 ## 使用截图预览
 
 ![作业详情页面](images/assignment-page.png)

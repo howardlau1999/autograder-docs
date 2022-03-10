@@ -6,21 +6,27 @@
 
 其中，Windows 平台需要至少 Windows 10 以上的版本，同时需要启用 Hyper-V 技术，有可能与其他虚拟机软件冲突。如果您正在使用其他的虚拟机软件，例如 VMware 或者 VirtualBox，需要查询对应的文档，将虚拟机软件更新到与 Hyper-V 技术兼容的版本。
 
-## 安装 Web 服务
+## 下载 Autograder
 
-Autograder 以单独的静态可执行二进制文件分发，无需额外的安装步骤，仅需要下载 Autograder 程序，初始化数据库，创建配置文件，并运行即可。
+可以[前往 GitHub 仓库下载已经编译好的二进制程序](https://github.com/howardlau1999/autograder-server/releases/)，直接解压即可使用。
 
-下面以 Linux 为例。假设您已经将二进制文件下载到了 `~/autograder-server` 目录下，首先执行以下命令，初始化数据库并创建配置文件模板：
+Autograder 分为两个二进制程序，其中 `autograder-server` 是提供 Web 以及后端服务的服务程序，`autograder-grader` 是评测机的评测服务程序。一般来说，只需要运行一个后端服务即可，而评测服务可以选择多台机器运行来获取可扩展性，不建议一台机器上运行多个评测服务。
+
+下面将分别介绍 Web 服务以及评测服务的配置文件填写方法。
+
+## 配置 Web 服务 
+
+下面以 Linux 为例。假设您已经将二进制文件解压到了 `~/autograder-server` 目录下，首先执行以下命令，初始化数据库：
 
 ```bash
 ./autograder-server --init --email 您的邮箱地址
 ```
 
-运行后，当前目录会创建 `db` 和 `storage` 文件夹以及文件，`db` 文件夹为 Autograder 存放用户信息等的数据库，`storage` 文件夹用来存放用户上传文件、运行结果等。
+运行后，当前目录会创建 `db` 文件夹，为 Autograder 存放用户信息等的数据库。
 
 在初始化成功后，将输出随机生成的 root 用户密码，请保存到合适的地方，后续需要使用该密码登录 Autograder，登录后可以修改。
 
-之后，可以运行 `./autograder-server --config` 输出配置模板文件。您可以将输出重定向到文件里，文件名必须为 `config.toml`。用文本编辑器打开 `config.toml` 文件并填写以下信息：
+之后，可以运行 `./autograder-server --config` 输出配置模板文件。您可以将输出重定向到文件里，文件名必须为 `config.toml`，建议保存到 `~/.autograder-server/config.toml`。用文本编辑器打开 `config.toml` 文件并填写以下信息：
 
 ### 配置评测机服务
 
@@ -42,6 +48,8 @@ Autograder 以单独的静态可执行二进制文件分发，无需额外的安
 	port=8080 # Web 服务监听端口
 ```
 
+后续服务进程启动后，可以通过浏览器访问 `http://服务器地址或域名:端口` 进行使用。
+
 ### 配置存储
 
 #### 配置数据库路径
@@ -55,7 +63,7 @@ Autograder 以单独的静态可执行二进制文件分发，无需额外的安
 
 ```toml
 [fs.local]
-	dir="" # 存储目录，可以为任意路径，需要有读写权限
+	dir="storage" # 存储目录，可以为任意路径，不要和评测服务重复，需要有读写权限
 ```
 
 #### 配置评测机文件服务
@@ -102,9 +110,7 @@ Autograder 以单独的静态可执行二进制文件分发，无需额外的安
     client-secret="" # 填写生成的 Client Secret
 ```
 
-## 安装评测服务
-
-评测服务同样以单个二进制分发，无需安装，只需要配置好后端服务地址即可运行。
+## 配置评测服务
 
 运行 `./autograder-grader --config` 可以输出配置模板，建议重定向到 `config.toml` 文件。为了避免和后端服务的配置文件冲突，可以将文件保存到 `~/.autograder-grader/config.toml`（Windows 为 `C:\.autograder-grader\config.toml`）。
 
@@ -133,7 +139,7 @@ Autograder 以单独的静态可执行二进制文件分发，无需额外的安
 
 ```toml
 [fs.local]
-	dir="grader" # 本地存储路径
+	dir="grader" # 本地存储路径，不要和后端服务重复，可以为任意路径
 ```
 
 #### 配置远程存储
