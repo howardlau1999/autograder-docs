@@ -6,6 +6,8 @@
 
 其中，Windows 平台需要至少 Windows 10 以上的版本，同时需要启用 Hyper-V 技术，有可能与其他虚拟机软件冲突。如果您正在使用其他的虚拟机软件，例如 VMware 或者 VirtualBox，需要查询对应的文档，将虚拟机软件更新到与 Hyper-V 技术兼容的版本。
 
+**每台评测机都需要安装 Docker。**
+
 ## 下载 Autograder
 
 可以[前往 GitHub 仓库下载已经编译好的二进制程序](https://github.com/howardlau1999/autograder-server/releases/)，直接解压即可使用。
