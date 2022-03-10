@@ -145,7 +145,7 @@ service AutograderService {
 
 ## 评测文件传输
 
-评测机使用单独的 HTTP 端口上传和下载文件。HTTP 请求的路径就是文件的路径，`GET` 请求为下载，`POST` 请求为上传。文件内容都是直接放在 HTTP Body 里，无需 Multipart Form 编码。为了保证接口安全，需要在每个请求头中携带评测 Token，和评测机注册时的 Token 保持一致。
+评测机使用单独的 HTTP 端口上传和下载文件。HTTP 请求的路径就是文件的路径，`GET` 请求为下载，`POST` 请求为上传。文件内容都是直接放在 HTTP Body 里，无需 Multipart Form 编码。为了保证接口安全，需要在每个请求头中携带后端服务配置中的文件服务 Token。
 
 ## 服务指标监控
 
