@@ -1,7 +1,11 @@
 nav:
   - 简介: "index.md"
   - 用户指南: 
+      简介: "user-guide/index.md"
       安装运行: "user-guide/installation.md"
+      课程管理: "user-guide/course.md"
+      作业管理: "user-guide/assignment.md"
+      创建提交: "user-guide/submission.md"
       "Docker 镜像构建指引": "user-guide/docker-image-specification.md"
   - 开发指南: 
       简介: "development-guide/index.md"
