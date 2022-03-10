@@ -50,8 +50,8 @@ message InitDownloadResponse {
 }
 
 service AutograderService {
-    rpc InitUpload(InitUploadRequest) returns (InitUploadResponse);
-    rpc InitDownload(InitDownloadRequest) returns (InitDownloadResponse);
+  rpc InitUpload(InitUploadRequest) returns (InitUploadResponse);
+  rpc InitDownload(InitDownloadRequest) returns (InitDownloadResponse);
 }
 ```
 
@@ -90,7 +90,7 @@ message CreateSubmissionResponse {
 }
 
 service AutograderService {
-    rpc CreateSubmission(CreateSubmissionRequest) returns (CreateSubmissionResponse);
+  rpc CreateSubmission(CreateSubmissionRequest) returns (CreateSubmissionResponse);
 }
 ```
 
@@ -113,7 +113,7 @@ message SubscribeSubmissionResponse {
 }
 
 service AutograderService {
-    rpc SubscribeSubmission(SubscribeSubmissionRequest) returns (streams SubscribeSubmissionResponse);
+  rpc SubscribeSubmission(SubscribeSubmissionRequest) returns (streams SubscribeSubmissionResponse);
 }
 ```
 
