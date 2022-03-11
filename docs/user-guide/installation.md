@@ -78,6 +78,19 @@ Autograder 分为两个二进制程序，其中 `autograder-server` 是提供 We
 	token="" # 鉴权密钥
 ```
 
+### 配置认证密钥
+
+由于文件上传下载需要使用服务器生成的 Token，为了避免客户端伪造 Token，需要配置随机的字符串作为 Token 的加密密钥。
+
+```toml
+[token.secret]
+	session="user-session-token-secret"
+	upload="upload-token-secret"
+	download="download-token-secret"
+```
+
+这三个密钥都可以使用任意随机的字符串，建议不少于 32 个字符。
+
 ### 配置 SMTP 服务器
 
 在 Autograder 中，Email 是用来重置密码以及发送通知的唯一通道，为了保证邮件正常发送，需要配置 SMTP 服务器，对应配置文件中的 `[smtp]` 部分：
