@@ -53,6 +53,9 @@ Docker 镜像需要您在本地构建好之后上传至 Docker Hub，并确保 A
 
 ## 运行脚本参考样例
 
+!!!warning "注意换行符"
+    如果您在 Windows 平台上编写脚本，需要注意保存的时候要**使用 `LF` 换行符**而不是 `CRLF` 换行符，否则会导致脚本无法运行。
+
 ```python
 #!/usr/bin/env python3
 
