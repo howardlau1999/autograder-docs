@@ -18,7 +18,7 @@ Autograder 分为两个二进制程序，其中 `autograder-server` 是提供 We
 
 ## 配置 Web 服务 
 
-下面以 Linux 为例。假设您已经将二进制文件解压到了 `~/autograder-server` 目录下，首先执行以下命令，初始化数据库：
+下面以 Linux 为例。假设您已经将二进制文件解压到了 `~/autograder-server` 目录下，首先执行 `./autograder-server --config` 输出配置模板文件，将输出重定向到文件里，文件名必须为 `config.toml`，建议保存到 `~/.autograder-server/config.toml`。用文本编辑器打开 `config.toml` 文件并填写配置，详细的配置项在下方。保存配置文件后，执行以下命令初始化数据库：
 
 ```bash
 ./autograder-server --init --email 您的邮箱地址
@@ -28,7 +28,7 @@ Autograder 分为两个二进制程序，其中 `autograder-server` 是提供 We
 
 在初始化成功后，将输出随机生成的 root 用户密码，请保存到合适的地方，后续需要使用该密码登录 Autograder，登录后可以修改。
 
-之后，可以运行 `./autograder-server --config` 输出配置模板文件。您可以将输出重定向到文件里，文件名必须为 `config.toml`，建议保存到 `~/.autograder-server/config.toml`。用文本编辑器打开 `config.toml` 文件并填写以下信息：
+之后，运行 `./autograder-server` 即可启动 Web 服务。
 
 ### 配置评测机服务
 
