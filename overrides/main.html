@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+<script>
+
+</script>
+{% endblock %}
+
+{% block content %}
+  <div style="text-align: justify">
+    {{ super() }}
+  </div>
+
+  {% if git_page_authors %}
+    <div class="md-source-date">
+      <small>
+          本页作者: {{ git_page_authors | default('enable mkdocs-git-authors-plugin') }}
+      </small>
+    </div>
+  {% endif %}
+{% endblock %}
